@@ -20,6 +20,13 @@ connectDB();
 
 
 //listener
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
+})
+
+
+//for smooth closing of server whenever the run is crashed
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`logged Error ${err}`);
+  server.close(()=> process.exit(1));
 })

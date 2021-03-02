@@ -31,8 +31,60 @@ const register = async (req, res, next) => {
    }
 }
 
-const login = (req, res, next) => {
-    res.send("login route");
+const login = async (req, res, next) => {
+  
+   const {email, password} = req.body;
+
+   if(!email||!password){
+      res.status(400).json({
+         success:false,
+         error:"please provide an email and password"
+      })
+   }
+
+   //now to check if the user already exist or not!!
+
+   try{
+
+      const user =  await User.findOne({email}).select("password");
+
+      if(!user)
+{
+   res.status(404).json({
+      success:false,
+      error:"invalid credentials(user does not exist)"
+   
+   })
+}
+
+//checking if password match
+const isMatch = await user.matchPasswords(password);
+
+if(!isMatch){
+   res.status(400).json({
+  success:false,
+  error:"invalid credentials(wrong password)",
+   })
+  
+}
+
+
+res.status(200).json({
+   success: true,
+   Token:"6t3ejhdu7"
+
+});
+
+   }catch(error){
+
+      res.status(500).json({
+         success:false,
+         error:error.message
+      })
+
+   } 
+
+
  }
 
 
