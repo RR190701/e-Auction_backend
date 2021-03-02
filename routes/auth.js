@@ -1,3 +1,5 @@
+//creating our APIs
+
 const express = require("express");
 const router = express.Router();
 const {register, login, forgetPassword, resetPassword} = require("./../controllers/auth")
