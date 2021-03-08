@@ -26,7 +26,7 @@ app.use(errorHandler);
 
 //listener
 const server = app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Server is working at http://localhost:${port}`)
 })
 
 
