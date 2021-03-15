@@ -17,6 +17,8 @@ app.use('/api/auth', require("./routes/auth"));
 /**
  * error handling should be the last peice of the middleware
  */
+ app.use('/api/private', require("./routes/private"));
+
 app.use(errorHandler);
 
 
