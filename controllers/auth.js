@@ -59,7 +59,7 @@ if(!isMatch){
   
 }
 
-sendToken(user, 200, res)
+sendToken(user, 200,res)
 
    }catch(error){
 
