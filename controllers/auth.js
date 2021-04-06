@@ -83,6 +83,7 @@ const forgetPassword = async (req, res, next) => {
     }
 
 
+<<<<<<< HEAD
     const resetToken = crypto.randomBytes(20).toString("hex");
     const reset_Password_Token = crypto
     .createHash("sha256")
@@ -106,6 +107,9 @@ const forgetPassword = async (req, res, next) => {
     
     try{
       
+=======
+sendToken(user, 200,res)
+>>>>>>> ae2a94e66dae4b4c222e92de2b3b00e0f92fc4c4
 
       await sendEmail({
         to:user.email,
