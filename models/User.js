@@ -10,6 +10,26 @@ const userSchema = new mongoose.Schema({
         required:[true, "Please provide a username"]
 
     },
+    profession: {
+        type: String,
+        required:[true, "Please provide a profession"]
+
+    },
+    address: {
+        type: String,
+        required:[true, "Please provide a address"]
+
+    },
+    number: {
+        type: Number,
+        required:[true, "Please provide a Number"]
+
+    },
+    age: {
+        type: Number,
+        required:[true, "Please provide a age"]
+
+    },
     email: {
         type:String,
         required:[true, "Please provide a email"],

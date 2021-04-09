@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 
 
 const register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, address, age, number, profession } = req.body;
 
   if (!username||!email || !password) {
     //sending error
@@ -19,6 +19,7 @@ const register = async (req, res, next) => {
       username,
       email,
       password,
+      address, age, number, profession
     });
 
     sendToken(user, 201, res);
