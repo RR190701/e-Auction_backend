@@ -72,6 +72,11 @@ const login = async (req, res, next) => {
 const forgetPassword = async (req, res, next) => {
 
   const {email} = req.body;
+  
+  if (!email) {
+    //sending error
+    return next(new ErrorResponse("please provide a registered email", 400));
+  }
 
   try{
 
@@ -80,7 +85,7 @@ const forgetPassword = async (req, res, next) => {
 
     //to make sure user is authentic
     if(!user){
-      return next(new ErrorResponse("No such user", 404));
+      return next(new ErrorResponse("Invalid email address", 404));
     }
 
 
@@ -115,7 +120,7 @@ const forgetPassword = async (req, res, next) => {
 
       res.status(200).json({
         success:true,
-        data:"Email sent"
+        data:"Email sent sucessfully"
       });
 
     }catch(error){
