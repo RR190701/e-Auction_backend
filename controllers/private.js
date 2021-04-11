@@ -3,9 +3,9 @@ const User = require("./../models/User");
 const ErrorResponse = require("./../utils/errorResponse");
 
 exports.getPrivateData = async (req, res, next) => {
-  const username = req.params.username;
+  const email = req.params.email;
 
-  if (!username) {
+  if (!email) {
     //sending error
     return next(new ErrorResponse("No username mentioned", 400));
   }
@@ -13,7 +13,7 @@ exports.getPrivateData = async (req, res, next) => {
   let user;
 
   try {
-    user = await User.findOne({ username }).populate('-password');
+    user = await User.findOne({ email }).populate('-password');
 
     if (!user) {
         //sending error
