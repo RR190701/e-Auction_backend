@@ -46,7 +46,7 @@ const login = async (req, res, next) => {
     if (!user) {
       //sending error
       return next(
-        new ErrorResponse("invalid credentials(user does not exist)", 401)
+        new ErrorResponse("invalid Email", 401)
       );
     }
 
@@ -56,7 +56,7 @@ const login = async (req, res, next) => {
     if (!isMatch) {
       //sending error
       return next(
-        new ErrorResponse("invalid credentials(wrong password)"),
+        new ErrorResponse("wrong password"),
         401
       );
     }
