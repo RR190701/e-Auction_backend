@@ -89,7 +89,38 @@ const ActiveAuctions = async(req, res, next) =>{
     catch(error){
       next(error);
     }
+
+}
+const AuctionDetails = async(req, res, next) =>{
+
+    const auctionID = req.params.auctionID;
+    if (!auctionID) {
+        //sending error
+        return next(new ErrorResponse("No auction ID mentioned", 400));
+      }
     
+      let auction;
+    
+      try {
+        auction = await Auction.findOne({ auctionID });
+    
+        if (!auction) {
+            //sending error
+            return next(
+              new ErrorResponse("No auction with that ID", 401)
+            );
+        }
+    
+      } catch (error) {
+        //sending error
+        next(error);
+      }
+    
+      res.status(200).json({
+        success: true,
+        auction,
+      });
+
 }
 
-module.exports = {UpcomingAuctions, ActiveAuctions,Results, RegisterAuction};
+module.exports = {UpcomingAuctions, ActiveAuctions,Results, RegisterAuction, AuctionDetails};
