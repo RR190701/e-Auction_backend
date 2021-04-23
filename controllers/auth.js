@@ -9,12 +9,13 @@ const bcrypt = require("bcryptjs");
 const register = async (req, res, next) => {
   const { username, email, password, address, age, number, profession } = req.body;
 
-  if (!username||!email || !password) {
+  if (!username||!email||!password) {
     //sending error
     return next(new ErrorResponse("please provide an (email/ password/ username)", 400));
   }
 
   try {
+
     const user = await User.create({
       username,
       email,
@@ -39,7 +40,6 @@ const login = async (req, res, next) => {
   }
 
   //now to check if the user already exist or not!!
-
   try {
     const user = await User.findOne({ email }).select("password");
 

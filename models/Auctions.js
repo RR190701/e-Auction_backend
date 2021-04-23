@@ -47,7 +47,21 @@ const auctionSchema = new mongoose.Schema({
         type:String,
         required:[true, "Please provide a discription"]
     },
-    timings:Date
+    timings:Date,
+    allBids:[
+        {
+
+            username: {
+                type:String,
+                required:[true, "username is required"]
+            },
+            bid: {
+                type:Number,
+                required:[true, "Please provide a bid value"]
+            }
+           
+        }
+    ]
 
 });
 
