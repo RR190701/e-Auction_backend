@@ -6,5 +6,5 @@ const { protect } = require('../middleware/auth')
 
 
 
-router.route("/profile/:email").get(protect, getPrivateData);
+router.route("/profile/:username").get(protect, getPrivateData);
 module.exports = router;

@@ -41,7 +41,7 @@ const login = async (req, res, next) => {
 
   //now to check if the user already exist or not!!
   try {
-    const user = await User.findOne({ email }).select("password");
+    const user = await User.findOne({ email }).select("password").select("username");
 
     if (!user) {
       //sending error
@@ -61,7 +61,7 @@ const login = async (req, res, next) => {
       );
     }
 
-    sendToken(user, 200, res);
+    sendToken(user, 200, res, user.username);
   } catch (error) {
     //sending error
     next(error);
@@ -179,9 +179,9 @@ const resetPassword = async (req, res, next) => {
 };
 
 //A function that create a signed jwt token for the authentication of the user
-const sendToken = (user, statusCode, res) => {
+const sendToken = (user, statusCode, res, username) => {
   const token = user.getSignedToken();
-  res.status(statusCode).json({ success: true, token });
+  res.status(statusCode).json({ success: true, token, username });
 };
 
 module.exports = { register, login, forgetPassword, resetPassword };
