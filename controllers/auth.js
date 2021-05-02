@@ -169,7 +169,7 @@ const resetPassword = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: "Password reset success"
+      data: "Password reset successfully"
     })
   
   }catch(error){
