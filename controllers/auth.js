@@ -109,7 +109,7 @@ const forgetPassword = async (req, res, next) => {
     <p>Please go to the link to reset your password</p>
     <a href = ${resetUrl} clicktracking=off>${resetUrl}</a>
     `
-    
+
     try{
       await sendEmail({
         to:user.email,

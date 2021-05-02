@@ -5,9 +5,9 @@ const nodemailer = require("nodemailer");
 const sendEmail = (options) => {
 
   const transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE,
+    service:"gmail",
     auth: {
-      user: process.env.EMAIL_USERNAME,
+      user: process.env.EMAIL_FROM,
       pass: process.env.EMAIL_PASSWORD,
     },
   });
